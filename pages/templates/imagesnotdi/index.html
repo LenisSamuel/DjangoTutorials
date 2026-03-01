@@ -1,0 +1,20 @@
+{% extends 'pages/base.html' %}
+
+{% block title %} Image Storage - No DI {% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Upload image (No DI)</h2>
+
+  <form action="{% url 'imagenodi_save' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="profile_image" />
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if image_url %}
+    <hr>
+    <img src="{{ image_url }}" width="300"/>
+  {% endif %}
+</div>
+{% endblock %}
